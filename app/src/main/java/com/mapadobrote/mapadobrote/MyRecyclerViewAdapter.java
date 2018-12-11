@@ -11,14 +11,14 @@ import android.widget.TextView;
 import java.util.List;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
-    private List<String> myCharityData;
+    private List<ChooseCategory> myCharityData;
     private LayoutInflater myInflater;
     private View.OnClickListener myClickListener;
 
 
-    MyRecyclerViewAdapter(Context context, List<String> data) {
+    MyRecyclerViewAdapter(Context context, List<ChooseCategory> categoryType) {
         this.myInflater = LayoutInflater.from(context);
-        this.myCharityData = data;
+        this.myCharityData = categoryType;
     }
 
     @Override
@@ -29,8 +29,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String charitycategory = myCharityData.get(position);
-        holder.myTextView.setText(charitycategory);
+        ChooseCategory charitycategory = myCharityData.get(position);
+        holder.myTextView.setText((CharSequence) charitycategory);
     }
 
     @Override

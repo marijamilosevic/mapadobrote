@@ -16,21 +16,21 @@ public class ChooseCategoryActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<String> charityTypes = new ArrayList<>();
-        charityTypes.add("Odeća i obuća za decu");
-        charityTypes.add("Odeća i obuća za odrasle");
-        charityTypes.add("odeća i obuća za bebe");
-        charityTypes.add("Oprema za bebe");
-        charityTypes.add("Hrana");
-        charityTypes.add("Sredstva za ličnu higijenu");
-        charityTypes.add("Posteljina");
-        charityTypes.add("Igračke");
-        charityTypes.add("Knjige");
-        charityTypes.add("Školski pribor");
-        charityTypes.add("Hrana za pse i mačke");
-        charityTypes.add("Nameštaj");
-        charityTypes.add("Tehnika");
-        charityTypes.add("Čep za hendikep");
+        ArrayList<ChooseCategory> charityTypes = new ArrayList<ChooseCategory>();
+        charityTypes.add(new ChooseCategory("Odeca i obuca za decu", null, 1));
+        charityTypes.add(new ChooseCategory("Odeća i obuća za odrasle", null, 2));
+        charityTypes.add(new ChooseCategory("odeća i obuća za bebe", null, 3));
+        charityTypes.add(new ChooseCategory("Oprema za bebe", null, 4));
+        charityTypes.add(new ChooseCategory("Hrana", null, 5));
+        charityTypes.add(new ChooseCategory("Sredstva za ličnu higijenu", null, 6));
+        charityTypes.add(new ChooseCategory("Posteljina", null, 7));
+        charityTypes.add(new ChooseCategory("Igračke", null, 8));
+        charityTypes.add(new ChooseCategory("Knjige", null, 9));
+        charityTypes.add(new ChooseCategory("Školski pribor", null, 10));
+        charityTypes.add(new ChooseCategory("Hrana za pse i mačke", null, 11));
+        charityTypes.add(new ChooseCategory("Nameštaj", null, 12));
+        charityTypes.add(new ChooseCategory("Tehnika", null, 13));
+        charityTypes.add(new ChooseCategory("Čep za hendikep", null, 14));
 
         RecyclerView recyclerView = findViewById(R.id.rvCharityItem);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

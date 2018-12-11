@@ -24,12 +24,9 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvCharityItem"
         android:layout_width="match_parent"
-        android:layout_height="369dp"
-        android:layout_below="@+id/ChooseCategoryTxt"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ChooseCategoryTxt"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginBottom="47dp" />
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
