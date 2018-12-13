@@ -30,7 +30,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ChooseCategory charitycategory = myCharityData.get(position);
-        holder.myTextView.setText((CharSequence) charitycategory);
+        holder.myTextView.setText(charitycategory.category);
     }
 
     @Override
