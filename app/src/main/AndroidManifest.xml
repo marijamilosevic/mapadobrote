@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".TermsOfUseActivity" />
+        <activity android:name=".LocationPageActivity"></activity>
     </application>
 
 </manifest>
