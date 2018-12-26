@@ -1,6 +1,7 @@
 package com.mapadobrote.mapadobrote;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
+    private final Context context;
     private List<ChooseCategory> myCharityData;
     private LayoutInflater myInflater;
     private View.OnClickListener myClickListener;
@@ -18,6 +20,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     MyRecyclerViewAdapter(Context context, List<ChooseCategory> categoryType) {
         this.myInflater = LayoutInflater.from(context);
+        this.context = context;
         this.myCharityData = categoryType;
     }
 
@@ -31,6 +34,13 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ChooseCategory charitycategory = myCharityData.get(position);
         holder.myTextView.setText(charitycategory.category);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MapsActivity.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -42,24 +52,15 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
         }
     }
 
-    public void setClickListener(View.OnClickListener itemClickListener) {
-        this.myClickListener = itemClickListener;
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView myTextView;
 
 
         ViewHolder(View itemView) {
             super(itemView);
             myTextView = itemView.findViewById(R.id.tvCharityItem);
-            itemView.setOnClickListener(this);
         }
 
-        @Override
-        public void onClick(View view) {
-            if (myClickListener != null) myClickListener.onClick(view);
-        }
     }
 
 

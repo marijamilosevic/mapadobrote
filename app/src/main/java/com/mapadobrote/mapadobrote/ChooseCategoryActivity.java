@@ -4,11 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import java.util.ArrayList;
 
-public class ChooseCategoryActivity extends AppCompatActivity implements View.OnClickListener {
+public class ChooseCategoryActivity extends AppCompatActivity {
     MyRecyclerViewAdapter adapter;
 
     @Override
@@ -35,12 +34,6 @@ public class ChooseCategoryActivity extends AppCompatActivity implements View.On
         RecyclerView recyclerView = findViewById(R.id.rvCharityItem);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MyRecyclerViewAdapter(this, charityTypes);
-        adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
-    }
-
-    @Override
-    public void onClick(View v) {
-
     }
 }
