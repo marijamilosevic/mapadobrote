@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LocationPageActivity">
+
+    <TextView
+        android:id="@+id/nameOfLocation_textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/mdbg"
+        android:textColor="@color/butttextclr"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Drzava:"
+        android:textColor="@color/mdbg" />
+
+    <TextView
+        android:id="@+id/stateOfLocation_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/butttextclr"
+        android:textColor="@color/mdbg" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adresa:"
+        android:textColor="@color/mdbg" />
+
+    <TextView
+        android:id="@+id/addressOfLocation_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/butttextclr"
+        android:textColor="@color/mdbg" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Radno vreme:"
+        android:textColor="@color/mdbg" />
+
+    <TextView
+        android:id="@+id/workingHours_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/butttextclr"
+        android:textColor="@color/mdbg" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Opis:"
+        android:textColor="@color/mdbg" />
+
+    <TextView
+        android:id="@+id/descriptionOfLocation_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/butttextclr"
+        android:textColor="@color/mdbg" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="E-mail:"
+        android:textColor="@color/mdbg" />
+
+    <TextView
+        android:id="@+id/emailOfLocation_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/butttextclr"
+        android:textColor="@color/mdbg" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Facebook stranica:"
+        android:textColor="@color/mdbg" />
+
+    <TextView
+        android:id="@+id/facebookPage_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/butttextclr"
+        android:textColor="@color/mdbg" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Web site:"
+        android:textColor="@color/mdbg" />
+
+    <TextView
+        android:id="@+id/webSite_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/butttextclr"
+        android:textColor="@color/mdbg" />
+
+</LinearLayout>
