@@ -27,5 +27,9 @@ public class LocationPageActivity extends AppCompatActivity {
         facebookPageTxt.setText(loc.facebookPage);
         TextView webSiteTxt = (TextView) findViewById(R.id.webSite_textView);
         webSiteTxt.setText(loc.webSite);
+
+
     }
+
+
 }

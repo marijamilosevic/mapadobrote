@@ -1,7 +1,15 @@
 <resources>
     <string name="app_name">Mapa Dobrote</string>
     <string name="button">Prihvatam</string>
-    <string name="text_view">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here,ncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown p</string>
+    <string name="terms_of_use">
+        <p>Mapa Dobrote je neprofitni humanitarni projekat s ciljem da informiše građane Srbije o tome gde mogu odneti višak odeće, obuće, knjiga, hrane i drugih materijalnih dobara. Ideja je da približimo ljude koji žele da pomognu sa humanitarnim organizacijama gde je pomoć potrebna.</p>
+        <p> Aplikacija je besplatna i uvek ce biti, i za korisnike, i za humanitarne organizacije. Sav rad uložen u izradu ove aplikacije je volonterski.</p>
+        <p>Tim Mapa Dobrote ne odgovara za upravljanje vašim donacijama, niti za to kome ce one biti prosleđene. Mi samo pružamo spisak institucija kojima je pomoć potrebna.</p>
+        <p>Informacije o lokacijama su brižljivo pripremljene ali postoji mogućnost da nam se negde potkrala neka greska. Ukoliko pronadjete neku grešku ili nelogičnost, slobodno nam pišite na mape.dobrote@gmail.com, a mi ćemo je ispraviti u najkraćem mogućem roku.</p>
+        <p>Ukoliko znate za jos neku humanitarnu organizaciju koju nismo uvrstili na spisak, pišite nam na mape.dobrote@gmail.com, a mi cemo istu kontaktirati i ponuditi im da ih uvrstimo u našu Mapu.</p>
+        <p>Ukoliko se bavite marketingom, programiranjem ili dizajnom a zelite da volontirate i da na taj nacin podrzite nas projekat, slobodno nam pisite.</p>
+        <p>Hvala što ste deo akcije Mapa Dobrote. Ne zaboravite - "Naše je samo ono sto drugima damo."</p>
+        <p>Tim Mapa Dobrote</p></string>
     <string name="choosecattxt">Izaberite šta želite da donirate</string>
     <string name="title_activity_maps">Map</string>
 
