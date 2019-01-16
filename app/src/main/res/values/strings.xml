@@ -1,19 +1,15 @@
 <resources>
     <string name="app_name">Mapa Dobrote</string>
     <string name="button">Prihvatam</string>
-    <string name="terms_of_use">Mapa Dobrote je neprofitni humanitarni projekat s ciljem da informiše građane Srbije o tome gde mogu odneti višak odeće, obuće, knjiga, hrane i drugih materijalnih dobara. Ideja je da približimo ljude koji žele da pomognu sa humanitarnim organizacijama gde je pomoć potrebna. Aplikacija je besplatna i uvek ce biti, i za korisnike, i za humanitarne organizacije. Sav rad uložen u izradu ove aplikacije je volonterski.
-
-Tim Mapa Dobrote ne odgovara za upravljanje vašim donacijama, niti za to kome ce one biti prosleđene. Mi samo pružamo spisak institucija kojima je pomoć potrebna.
-
-Informacije o lokacijama su brižljivo pripremljene ali postoji mogućnost da nam se negde potkrala neka greska. Ukoliko pronadjete neku grešku ili nelogičnost, slobodno nam pišite na mape.dobrote@gmail.com, a mi ćemo je ispraviti u najkraćem mogućem roku.
-
-Ukoliko znate za jos neku humanitarnu organizaciju koju nismo uvrstili na spisak, pišite nam na mape.dobrote@gmail.com, a mi cemo istu kontaktirati i ponuditi im da ih uvrstimo u našu Mapu.
-
-Ukoliko se bavite marketingom, programiranjem ili dizajnom a zelite da volontirate i da na taj nacin podrzite nas projekat, slobodno nam pisite.
-
-Hvala što ste deo akcije Mapa Dobrote. Ne zaboravite - "Naše je samo ono sto drugima damo."
-
-Tim Mapa Dobrote</string>
+    <string name="terms_of_use">
+        <p>Mapa Dobrote je neprofitni humanitarni projekat s ciljem da informiše građane Srbije o tome gde mogu odneti višak odeće, obuće, knjiga, hrane i drugih materijalnih dobara. Ideja je da približimo ljude koji žele da pomognu sa humanitarnim organizacijama gde je pomoć potrebna.</p>
+        <p> Aplikacija je besplatna i uvek ce biti, i za korisnike, i za humanitarne organizacije. Sav rad uložen u izradu ove aplikacije je volonterski.</p>
+        <p>Tim Mapa Dobrote ne odgovara za upravljanje vašim donacijama, niti za to kome ce one biti prosleđene. Mi samo pružamo spisak institucija kojima je pomoć potrebna.</p>
+        <p>Informacije o lokacijama su brižljivo pripremljene ali postoji mogućnost da nam se negde potkrala neka greska. Ukoliko pronadjete neku grešku ili nelogičnost, slobodno nam pišite na mape.dobrote@gmail.com, a mi ćemo je ispraviti u najkraćem mogućem roku.</p>
+        <p>Ukoliko znate za jos neku humanitarnu organizaciju koju nismo uvrstili na spisak, pišite nam na mape.dobrote@gmail.com, a mi cemo istu kontaktirati i ponuditi im da ih uvrstimo u našu Mapu.</p>
+        <p>Ukoliko se bavite marketingom, programiranjem ili dizajnom a zelite da volontirate i da na taj nacin podrzite nas projekat, slobodno nam pisite.</p>
+        <p>Hvala što ste deo akcije Mapa Dobrote. Ne zaboravite - "Naše je samo ono sto drugima damo."</p>
+        <p>Tim Mapa Dobrote</p></string>
     <string name="choosecattxt">Izaberite šta želite da donirate</string>
     <string name="title_activity_maps">Map</string>
 
