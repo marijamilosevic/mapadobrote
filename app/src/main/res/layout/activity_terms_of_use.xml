@@ -8,20 +8,22 @@
     <ImageView
         android:id="@+id/mapa_dobrote_logo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
-        android:paddingTop="24dp"
         android:paddingBottom="24dp"
-        android:scaleType="fitStart"
+        android:paddingTop="24dp"
+        android:scaleType="fitCenter"
         android:src="@drawable/logo_color" />
 
     <ScrollView
         android:id="@+id/scrollview_terms_of_use"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_below="@id/mapa_dobrote_logo">
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/frame"
+        android:layout_below="@id/mapa_dobrote_logo"
+        android:layout_marginBottom="16dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -33,26 +35,20 @@
     </ScrollView>
 
     <FrameLayout
-        android:id="@+id/textView"
+        android:id="@+id/frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="470dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
         android:background="@color/mdbg">
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginRight="80dp"
             android:layout_marginBottom="35dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="32dp"
             android:background="@color/buttonclr"
             android:text="@string/button"
             android:textColor="@color/butttextclr"
