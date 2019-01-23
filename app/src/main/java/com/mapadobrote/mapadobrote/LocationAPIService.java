@@ -7,6 +7,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface LocationAPIService {
-    @GET("hskk2mu0kb7ygg1w/convertcsv.json?t=5m33f5c6")
+
+    @GET("bins/19yl8o")
     Call<List<Location>> listLocations();
 }

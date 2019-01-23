@@ -42,6 +42,7 @@ public class Location {
     public String facebookPage;
 
     @Expose()
+    @Nullable
     @SerializedName("website")
     public String webSite;
 
@@ -59,14 +60,14 @@ public class Location {
     @SerializedName("required categories")
     public String categories;
 
-    Location(int id, String name, String state, String address, String workingHours, String descriptionOfLocation, String emailOfLocation, String facebookPage, String webSite) {
+    Location(int id, String name, String state, String address, String workingHours, String description, String email, String facebookPage, String webSite) {
         this.id = id;
         this.name = name;
         this.state = state;
         this.address = address;
         this.workingHours = workingHours;
-        this.description = descriptionOfLocation;
-        this.email = emailOfLocation;
+        this.description = description;
+        this.email = email;
         this.facebookPage = facebookPage;
         this.webSite = webSite;
     }
