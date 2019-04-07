@@ -19,7 +19,7 @@ public class TermsOfUseActivity extends AppCompatActivity implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        SharedPreferences sharedPreferences = getSharedPreferences("agree", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("mapaDobrote", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("agree", true);
         editor.commit();

@@ -7,16 +7,17 @@
     tools:context=".SplashScreenActivity">
 
     <ImageView
+        android:id="@+id/mapa_dobrote_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="50dp"
         android:src="@drawable/logo" />
 
     <ImageView
+        android:id="@+id/illustration"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:scaleType="fitEnd"
         android:src="@drawable/illustration" />
-
 </RelativeLayout>
