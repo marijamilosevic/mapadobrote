@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="10dp">
+    android:padding="4dp">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher" />
+        android:id="@+id/ivCharityCategory"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@color/butttextclr"
+        android:padding="8dp"
+        android:src="@mipmap/ic_launcher"
+        android:tint="@color/buttonclr" />
 
     <TextView
         android:id="@+id/tvCharityItem"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="5dp"
+        android:layout_gravity="center_vertical"
         android:background="@color/butttextclr"
-        android:textAlignment="center"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:text="test"
         android:textColor="@color/mdbg"
-        android:textSize="20sp" />
-
+        android:textSize="18sp" />
 </LinearLayout>

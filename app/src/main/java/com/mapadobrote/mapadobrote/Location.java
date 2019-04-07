@@ -5,7 +5,9 @@ import android.support.annotation.Nullable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Location {
+import java.io.Serializable;
+
+public class Location implements Serializable {
 
     @Nullable
     @Expose
@@ -22,6 +24,12 @@ public class Location {
     @Expose()
     @Nullable
     public String address;
+
+    @Nullable
+    public double lat;
+
+    @Nullable
+    public double lng;
 
     @Expose
     @Nullable

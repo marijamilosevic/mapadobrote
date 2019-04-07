@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -41,6 +42,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
                 context.startActivity(intent);
             }
         });
+        holder.categoryImage.setImageResource(charitycategory.imageUrl);
     }
 
     @Override
@@ -54,11 +56,13 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView myTextView;
+        ImageView categoryImage;
 
 
         ViewHolder(View itemView) {
             super(itemView);
             myTextView = itemView.findViewById(R.id.tvCharityItem);
+            categoryImage = itemView.findViewById(R.id.ivCharityCategory);
         }
 
     }

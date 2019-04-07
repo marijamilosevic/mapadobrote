@@ -1,7 +1,12 @@
 package com.mapadobrote.mapadobrote;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class LocationPageActivity extends AppCompatActivity {
@@ -10,26 +15,71 @@ public class LocationPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_page);
-        Location loc = new Location(1, "Zvecanska", "Srbija", "zvecanska 2", "10-20", "dom za decu bez roditelja", "zvecanska@gmail.com", "facebook/pages/zvecanska", "www.zvecanska.com");
-        TextView nameOfLocationTxt = (TextView) findViewById(R.id.nameOfLocation_textView);
+
+        final Location loc = (Location) getIntent().getSerializableExtra("extra_location");
+
+        TextView nameOfLocationTxt = findViewById(R.id.nameOfLocation_textView);
+        TextView descriptionOfLocationTxt = findViewById(R.id.descriptionOfLocation_textView);
+        TextView descriptionOfLocationTitleTxt = findViewById(R.id.descriptionOfLocationtitle_textView);
+        TextView addressOfLocationTxt = findViewById(R.id.addressOfLocation_textView);
+        TextView workingHoursTxt = findViewById(R.id.workingHours_textView);
+        TextView phoneOfLocationTxt = findViewById(R.id.phoneOfLocation_textView);
+        TextView emailOfLocationTxt = findViewById(R.id.emailOfLocation_textView);
+        TextView emailTitleOfLocationTxt = findViewById(R.id.emailOfLocationTitle_textView);
+        TextView facebookPageTxt = findViewById(R.id.facebookPage_textView);
+        TextView facebookPageTitleTxt = findViewById(R.id.facebookPageTitle_textView);
+        TextView webSiteTxt = findViewById(R.id.webSite_textView);
+        TextView webSiteTitleTxt = findViewById(R.id.webSiteTitle_textView);
+
+
         nameOfLocationTxt.setText(loc.name);
-        TextView stateOfLocationTxt = (TextView) findViewById(R.id.stateOfLocation_textView);
-        stateOfLocationTxt.setText(loc.state);
-        TextView addressOfLocationTxt = (TextView) findViewById(R.id.addressOfLocation_textView);
         addressOfLocationTxt.setText(loc.address);
-        TextView workingHoursTxt = (TextView) findViewById(R.id.workingHours_textView);
-        workingHoursTxt.setText(loc.workingHours);
-        TextView descriptionOfLocationTxt = (TextView) findViewById(R.id.descriptionOfLocation_textView);
-        descriptionOfLocationTxt.setText(loc.description);
-        TextView emailOfLocationTxt = (TextView) findViewById(R.id.emailOfLocation_textView);
-        emailOfLocationTxt.setText(loc.email);
-        TextView facebookPageTxt = (TextView) findViewById(R.id.facebookPage_textView);
-        facebookPageTxt.setText(loc.facebookPage);
-        TextView webSiteTxt = (TextView) findViewById(R.id.webSite_textView);
-        webSiteTxt.setText(loc.webSite);
+        phoneOfLocationTxt.setText(loc.phone);
+
+        if (TextUtils.isEmpty(loc.workingHours)) {
+            workingHoursTxt.setText("Nije dostupno. Nazovite da proverite.");
+        } else {
+            workingHoursTxt.setText(loc.workingHours);
+        }
+
+        if (TextUtils.isEmpty(loc.description)) {
+            descriptionOfLocationTxt.setVisibility(View.GONE);
+            descriptionOfLocationTitleTxt.setVisibility(View.GONE);
+        } else {
+            descriptionOfLocationTxt.setText(loc.description);
+        }
+
+        if (TextUtils.isEmpty(loc.email)) {
+            emailOfLocationTxt.setVisibility(View.GONE);
+            emailTitleOfLocationTxt.setVisibility(View.GONE);
+        } else {
+            emailOfLocationTxt.setText(loc.email);
+        }
+
+        if (TextUtils.isEmpty(loc.facebookPage)) {
+            facebookPageTxt.setVisibility(View.GONE);
+            facebookPageTitleTxt.setVisibility(View.GONE);
+        } else {
+            facebookPageTxt.setText(loc.facebookPage);
+        }
+        if (TextUtils.isEmpty(loc.webSite)) {
+            webSiteTxt.setVisibility(View.GONE);
+            webSiteTitleTxt.setVisibility(View.GONE);
+        } else {
+            webSiteTxt.setText(loc.webSite);
+        }
 
 
+        Button navigateButton = findViewById(R.id.button_navigate);
+        navigateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Uri gmmIntentUri = Uri.parse("google.navigation:q=" + loc.lat + "," + loc.lng);
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent);
+            }
+        });
     }
-
 
 }

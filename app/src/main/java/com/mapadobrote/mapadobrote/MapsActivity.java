@@ -1,24 +1,41 @@
 package com.mapadobrote.mapadobrote;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
+import android.support.annotation.DrawableRes;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.io.IOException;
 import java.util.List;
@@ -29,16 +46,24 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
-    private GoogleMap mMap;
     public static final int REQUEST_CODE = 101;
+    private GoogleMap mMap;
+    private List<Location> locationList;
+    private BitmapDescriptor pinImage;
+    private ProgressBar progressBar;
+    private FusedLocationProviderClient fusedLocationClient;
+    private android.location.Location userLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
+
+        progressBar = findViewById(R.id.progress_bar); // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -47,10 +72,33 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if (myVersion > Build.VERSION_CODES.LOLLIPOP_MR1) {
             if (!checkIfAlreadyhavePermission()) {
                 requestForSpecificPermission();
+            } else {
+                getLastLocation();
             }
         }
+        pinImage = vectorToBitmap(R.drawable.ic_placeholder_pin_svgrepo_com, ContextCompat.getColor(this, R.color.mdbg));
         getLocations();
 
+
+    }
+
+    @SuppressLint("MissingPermission")
+    private void getLastLocation() {
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(new OnSuccessListener<android.location.Location>() {
+                    @Override
+                    public void onSuccess(android.location.Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            MapsActivity.this.userLocation = location;
+                            if (mMap != null) {
+                                mMap.setMyLocationEnabled(true);
+                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                                        new LatLng(location.getLatitude(), location.getLongitude()), 12));
+                            }
+                        }
+                    }
+                });
     }
 
     private void getLocations() {
@@ -65,15 +113,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onResponse(Call<List<Location>> call, Response<List<Location>> response) {
                 if (response.isSuccessful()) {
+                    MapsActivity.this.locationList = response.body();
                     for (Location location : response.body()) {
                         LatLng locationFromAddress = getLocationFromAddress(location.address);
+
                         if (locationFromAddress != null) {
+                            location.lat = locationFromAddress.latitude;
+                            location.lng = locationFromAddress.longitude;
                             MarkerOptions markerOptions = new MarkerOptions();
                             markerOptions.title(location.name);
+                            markerOptions.icon(pinImage);
                             markerOptions.position(locationFromAddress);
                             mMap.addMarker(markerOptions);
                         }
                     }
+                    progressBar.setVisibility(View.GONE);
                 } else {
                     // error response, no access to resource?
                 }
@@ -111,25 +165,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+    @SuppressLint("MissingPermission")
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        mMap.setOnMarkerClickListener(this);
+        mMap.setOnInfoWindowClickListener(this);
+        if (userLocation != null) {
+            mMap.setMyLocationEnabled(true);
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                    new LatLng(userLocation.getLatitude(), userLocation.getLongitude()), 12));
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        final MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(sydney);
-        markerOptions.title("Marker in Sydney");
-        mMap.addMarker(markerOptions);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-    }
+        }
 
-    @Override
-    public boolean onMarkerClick(Marker marker) {
-        Intent intent = new Intent(this, LocationPageActivity.class);
-        startActivity(intent);
-        return false;
     }
 
 
@@ -152,13 +199,45 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         switch (requestCode) {
             case REQUEST_CODE:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-                    //granted
+                    getLastLocation();
                 } else {
-                    //not granted
+                    Toast.makeText(this, "Da bismo vam prikazali lokacije u vašoj neposrednoj blizini, molimo vas da nam dozvolite pristup vašoj lokaciji.", Toast.LENGTH_LONG).show();
+                    requestForSpecificPermission();
                 }
                 break;
             default:
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+    }
+
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        Intent intent = new Intent(this, LocationPageActivity.class);
+        intent.putExtra("extra_location", findLocationByMarker(marker));
+        startActivity(intent);
+    }
+
+    private Location findLocationByMarker(Marker marker) {
+        for (Location location : locationList) {
+            if (TextUtils.equals(marker.getTitle(), location.name)) {
+                return location;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Demonstrates converting a {@link Drawable} to a {@link BitmapDescriptor},
+     * for use as a marker icon.
+     */
+    private BitmapDescriptor vectorToBitmap(@DrawableRes int id, @ColorInt int color) {
+        Drawable vectorDrawable = ResourcesCompat.getDrawable(getResources(), id, null);
+        Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(),
+                vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        vectorDrawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        DrawableCompat.setTint(vectorDrawable, color);
+        vectorDrawable.draw(canvas);
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
 }

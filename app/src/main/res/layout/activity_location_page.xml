@@ -1,109 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".LocationPageActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/nameOfLocation_textView"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/button_navigate"
+        android:layout_alignParentTop="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".LocationPageActivity">
+
+            <TextView
+                android:id="@+id/nameOfLocation_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/mdbg"
+                android:padding="24dp"
+                android:text="Location name"
+                android:textColor="@color/butttextclr"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/descriptionOfLocationtitle_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Opis:"
+                    android:textColor="@color/mdbg"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/descriptionOfLocation_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="test opis"
+                    android:textColor="@color/mdbg" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Adresa:"
+                    android:textColor="@color/mdbg"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/addressOfLocation_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Krfska 7, Novi Beograd"
+                    android:textColor="@color/mdbg" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Radno vreme:"
+                    android:textColor="@color/mdbg"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/workingHours_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="08-16h radnim danom"
+                    android:textColor="@color/mdbg" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Kontakt telefon:"
+                    android:textColor="@color/mdbg"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/phoneOfLocation_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="phone"
+                    android:textColor="@color/mdbg"
+                    android:textColorLink="@color/buttonclr" />
+
+                <TextView
+                    android:id="@+id/emailOfLocationTitle_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="E-mail:"
+                    android:textColor="@color/mdbg"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/emailOfLocation_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="email"
+                    android:textColor="@color/mdbg"
+                    android:textColorLink="@color/buttonclr" />
+
+                <TextView
+                    android:id="@+id/facebookPageTitle_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Facebook stranica:"
+                    android:textColor="@color/mdbg"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/facebookPage_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="web"
+                    android:textColor="@color/mdbg"
+                    android:textColorLink="@color/buttonclr" />
+
+                <TextView
+                    android:id="@+id/webSiteTitle_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Web site:"
+                    android:textColor="@color/mdbg"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/webSite_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="web"
+                    android:text="www.test.com"
+                    android:textColor="@color/mdbg"
+                    android:textColorLink="@color/buttonclr" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/button_navigate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:background="@color/mdbg"
-        android:textColor="@color/butttextclr"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Drzava:"
-        android:textColor="@color/mdbg" />
-
-    <TextView
-        android:id="@+id/stateOfLocation_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/butttextclr"
-        android:textColor="@color/mdbg" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Adresa:"
-        android:textColor="@color/mdbg" />
-
-    <TextView
-        android:id="@+id/addressOfLocation_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/butttextclr"
-        android:textColor="@color/mdbg" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Radno vreme:"
-        android:textColor="@color/mdbg" />
-
-    <TextView
-        android:id="@+id/workingHours_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/butttextclr"
-        android:textColor="@color/mdbg" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Opis:"
-        android:textColor="@color/mdbg" />
-
-    <TextView
-        android:id="@+id/descriptionOfLocation_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/butttextclr"
-        android:textColor="@color/mdbg" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="E-mail:"
-        android:textColor="@color/mdbg" />
-
-    <TextView
-        android:id="@+id/emailOfLocation_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/butttextclr"
-        android:textColor="@color/mdbg" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Facebook stranica:"
-        android:textColor="@color/mdbg" />
-
-    <TextView
-        android:id="@+id/facebookPage_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/butttextclr"
-        android:textColor="@color/mdbg" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Web site:"
-        android:textColor="@color/mdbg" />
-
-    <TextView
-        android:id="@+id/webSite_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/butttextclr"
-        android:textColor="@color/mdbg" />
-
-</LinearLayout>
+        android:padding="16dp"
+        android:text="Navigacija"
+        android:textColor="@color/butttextclr" />
+</RelativeLayout>
