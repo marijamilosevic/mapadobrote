@@ -23,10 +23,8 @@ public class TermsOfUseActivity extends AppCompatActivity implements View.OnClic
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putBoolean("agree", true);
         editor.commit();
-        if (editor.commit() == true) {
-            Intent intent = new Intent(this, ChooseCategoryActivity.class);
-            startActivity(intent);
-            finish();
-        }
+        Intent intent = new Intent(this, ChooseCategoryActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
