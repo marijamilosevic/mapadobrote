@@ -174,11 +174,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.setMyLocationEnabled(true);
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                     new LatLng(userLocation.getLatitude(), userLocation.getLongitude()), DEFAULT_ZOOM));
-
         }
-
     }
-
 
     private boolean checkIfAlreadyhavePermission() {
         int result = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
