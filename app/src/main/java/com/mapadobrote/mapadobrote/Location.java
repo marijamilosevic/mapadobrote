@@ -1,11 +1,12 @@
 package com.mapadobrote.mapadobrote;
 
-import android.support.annotation.Nullable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+
+import androidx.annotation.Nullable;
 
 public class Location implements Serializable {
 

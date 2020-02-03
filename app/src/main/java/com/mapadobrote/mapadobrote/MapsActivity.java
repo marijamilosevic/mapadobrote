@@ -11,13 +11,6 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
-import android.support.annotation.DrawableRes;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.res.ResourcesCompat;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -40,6 +33,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import java.io.IOException;
 import java.util.List;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.fragment.app.FragmentActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -68,7 +68,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         final SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
         int myVersion = Build.VERSION.SDK_INT;
         if (myVersion > Build.VERSION_CODES.LOLLIPOP_MR1) {
             if (!checkIfAlreadyhavePermission()) {
@@ -131,6 +130,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 } else {
                     // error response, no access to resource?
                 }
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(44.80401, 20.46513), 10));
             }
 
             @Override
@@ -197,8 +197,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     getLastLocation();
                 } else {
-                    Toast.makeText(this, "Da bismo vam prikazali lokacije u vašoj neposrednoj blizini, molimo vas da nam dozvolite pristup vašoj lokaciji.", Toast.LENGTH_LONG).show();
-                    requestForSpecificPermission();
+                    Toast.makeText(this, "Da bismo Vam prikazali lokacije u Vašoj neposrednoj blizini, molimo Vas da nam dozvolite pristup Vašoj lokaciji.", Toast.LENGTH_LONG).show();
                 }
                 break;
             default:

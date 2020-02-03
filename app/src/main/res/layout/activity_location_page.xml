@@ -152,6 +152,21 @@
                     android:text="www.test.com"
                     android:textColor="@color/mdbg"
                     android:textColorLink="@color/buttonclr" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Potrebno nam je:"
+                    android:textColor="@color/mdbg"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/categoriesOfLocation_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nema kategorija"
+                    android:textColor="@color/mdbg" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

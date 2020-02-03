@@ -3,11 +3,12 @@ package com.mapadobrote.mapadobrote;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class LocationPageActivity extends AppCompatActivity {
 
@@ -30,6 +31,7 @@ public class LocationPageActivity extends AppCompatActivity {
         TextView facebookPageTitleTxt = findViewById(R.id.facebookPageTitle_textView);
         TextView webSiteTxt = findViewById(R.id.webSite_textView);
         TextView webSiteTitleTxt = findViewById(R.id.webSiteTitle_textView);
+        TextView categoriesTxt = findViewById(R.id.categoriesOfLocation_textView);
 
 
         nameOfLocationTxt.setText(loc.name);
@@ -69,6 +71,9 @@ public class LocationPageActivity extends AppCompatActivity {
             webSiteTxt.setText(loc.webSite);
         }
 
+        if (!TextUtils.isEmpty(loc.categories)) {
+            categoriesTxt.setText(loc.categories);
+        }
 
         Button navigateButton = findViewById(R.id.button_navigate);
         navigateButton.setOnClickListener(new View.OnClickListener() {
